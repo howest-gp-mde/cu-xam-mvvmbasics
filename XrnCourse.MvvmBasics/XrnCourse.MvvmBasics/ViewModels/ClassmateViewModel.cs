@@ -1,11 +1,36 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
+using XrnCourse.MvvmBasics.Domain.Models;
+using XrnCourse.MvvmBasics.Domain.Services;
 
 namespace XrnCourse.MvvmBasics.ViewModels
 {
     public class ClassmateViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        private IClassmateRepository _classmateRepositoy;
+        private ISeederService _seederService;
+
+        private Classmate _currentClassmate; // holds classmate being edited
+
+        public ClassmateViewModel()
+        {
+            //todo: inject this dependencies instead of
+            //      instantiating a concrete implementation.
+            _classmateRepositoy = new JsonClassmateRepository();
+            _seederService = new SeedDataStoreService(_classmateRepositoy);
+
+            //todo: DO NOT call async or long-running operations in the
+            //      constructor, move this to a command
+            _seederService.EnsureSeeded();
+            _currentClassmate = _classmateRepositoy.GetAll().Result.FirstOrDefault();
+            
+            //initialize the properties with data from domain model
+            this.Name = _currentClassmate.Name;
+            this.Phone = _currentClassmate.Phone;
+            this.Birthdate = _currentClassmate.Birthdate;
+        }
 
         private string name;
         public string Name

@@ -11164,6 +11164,9 @@ namespace XrnCourse.MvvmBasics.Droid
 			// aapt resource value: 17
 			public const int ActionBar_icon = 17;
 			
+			// aapt resource value: 17
+			public const int ActionBar_icon = 17;
+			
 			// aapt resource value: 18
 			public const int ActionBar_indeterminateProgressStyle = 18;
 			
@@ -11226,6 +11229,15 @@ namespace XrnCourse.MvvmBasics.Droid
 			// aapt resource value: 2
 			public const int ActionMode_closeItemLayout = 2;
 			
+			// aapt resource value: 0
+			public const int ActionMode_background = 0;
+			
+			// aapt resource value: 1
+			public const int ActionMode_backgroundSplit = 1;
+			
+			// aapt resource value: 2
+			public const int ActionMode_closeItemLayout = 2;
+			
 			// aapt resource value: 3
 			public const int ActionMode_height = 3;
 			
@@ -11268,6 +11280,12 @@ namespace XrnCourse.MvvmBasics.Droid
 			
 			// aapt resource value: 3
 			public const int AlertDialog_listItemLayout = 3;
+			
+			// aapt resource value: 4
+			public const int AlertDialog_listLayout = 4;
+			
+			// aapt resource value: 5
+			public const int AlertDialog_multiChoiceItemLayout = 5;
 			
 			// aapt resource value: 4
 			public const int AlertDialog_listLayout = 4;
@@ -11354,11 +11372,44 @@ namespace XrnCourse.MvvmBasics.Droid
 					2130903405,
 					2130903406};
 			
+			// aapt resource value: 3
+			public const int AnimatedStateListDrawableCompat_android_constantSize = 3;
+			
 			// aapt resource value: 0
 			public const int AppBarLayoutStates_state_collapsed = 0;
 			
+			// aapt resource value: 4
+			public const int AnimatedStateListDrawableCompat_android_enterFadeDuration = 4;
+			
+			// aapt resource value: 5
+			public const int AnimatedStateListDrawableCompat_android_exitFadeDuration = 5;
+			
+			// aapt resource value: 2
+			public const int AnimatedStateListDrawableCompat_android_variablePadding = 2;
+			
 			// aapt resource value: 1
 			public const int AppBarLayoutStates_state_collapsible = 1;
+			
+			// aapt resource value: { 0x10100D0,0x1010199 }
+			public static int[] AnimatedStateListDrawableItem = new int[] {
+					16842960,
+					16843161};
+			
+			// aapt resource value: 1
+			public const int AnimatedStateListDrawableItem_android_drawable = 1;
+			
+			// aapt resource value: 0
+			public const int AnimatedStateListDrawableItem_android_id = 0;
+			
+			// aapt resource value: { 0x1010199,0x1010449,0x101044A,0x101044B }
+			public static int[] AnimatedStateListDrawableTransition = new int[] {
+					16843161,
+					16843849,
+					16843850,
+					16843851};
+			
+			// aapt resource value: 0
+			public const int AnimatedStateListDrawableTransition_android_drawable = 0;
 			
 			// aapt resource value: 2
 			public const int AppBarLayoutStates_state_liftable = 2;
@@ -12627,11 +12678,20 @@ namespace XrnCourse.MvvmBasics.Droid
 			// aapt resource value: 6
 			public const int FontFamilyFont_fontStyle = 6;
 			
+			// aapt resource value: 5
+			public const int FontFamilyFont_font = 5;
+			
+			// aapt resource value: 6
+			public const int FontFamilyFont_fontStyle = 6;
+			
 			// aapt resource value: 7
 			public const int FontFamilyFont_fontVariationSettings = 7;
 			
 			// aapt resource value: 8
 			public const int FontFamilyFont_fontWeight = 8;
+			
+			// aapt resource value: 9
+			public const int FontFamilyFont_ttcIndex = 9;
 			
 			// aapt resource value: 9
 			public const int FontFamilyFont_ttcIndex = 9;
@@ -12882,6 +12942,12 @@ namespace XrnCourse.MvvmBasics.Droid
 			// aapt resource value: 0
 			public const int MaterialCardView_strokeColor = 0;
 			
+			// aapt resource value: 3
+			public const int MaterialButton_android_insetBottom = 3;
+			
+			// aapt resource value: 0
+			public const int MaterialButton_android_insetLeft = 0;
+			
 			// aapt resource value: 1
 			public const int MaterialCardView_strokeWidth = 1;
 			
@@ -12919,6 +12985,91 @@ namespace XrnCourse.MvvmBasics.Droid
 					2130903468,
 					2130903469,
 					2130903473};
+			
+			// aapt resource value: 2
+			public const int MaterialButton_android_insetTop = 2;
+			
+			// aapt resource value: 4
+			public const int MaterialButton_backgroundTint = 4;
+			
+			// aapt resource value: 5
+			public const int MaterialButton_backgroundTintMode = 5;
+			
+			// aapt resource value: 6
+			public const int MaterialButton_cornerRadius = 6;
+			
+			// aapt resource value: 7
+			public const int MaterialButton_icon = 7;
+			
+			// aapt resource value: 8
+			public const int MaterialButton_iconGravity = 8;
+			
+			// aapt resource value: 9
+			public const int MaterialButton_iconPadding = 9;
+			
+			// aapt resource value: 10
+			public const int MaterialButton_iconSize = 10;
+			
+			// aapt resource value: 11
+			public const int MaterialButton_iconTint = 11;
+			
+			// aapt resource value: 12
+			public const int MaterialButton_iconTintMode = 12;
+			
+			// aapt resource value: 13
+			public const int MaterialButton_rippleColor = 13;
+			
+			// aapt resource value: 14
+			public const int MaterialButton_strokeColor = 14;
+			
+			// aapt resource value: 15
+			public const int MaterialButton_strokeWidth = 15;
+			
+			// aapt resource value: { 0x7F03016F,0x7F030170 }
+			public static int[] MaterialCardView = new int[] {
+					2130903407,
+					2130903408};
+			
+			// aapt resource value: 0
+			public const int MaterialComponentsTheme_bottomSheetDialogTheme = 0;
+			
+			// aapt resource value: 1
+			public const int MaterialComponentsTheme_bottomSheetStyle = 1;
+			
+			// aapt resource value: { 0x7F030041,0x7F030042,0x7F030068,0x7F030072,0x7F030076,0x7F030084,0x7F030085,0x7F03008B,0x7F03008C,0x7F03008D,0x7F0300B4,0x7F0300CF,0x7F030125,0x7F030126,0x7F030130,0x7F03014F,0x7F03015F,0x7F030192,0x7F030197,0x7F030198,0x7F030199,0x7F03019A,0x7F03019B,0x7F03019C,0x7F03019D,0x7F03019E,0x7F03019F,0x7F0301A0,0x7F0301A5,0x7F0301AA,0x7F0301AB,0x7F0301AF }
+			public static int[] MaterialComponentsTheme = new int[] {
+					2130903105,
+					2130903106,
+					2130903144,
+					2130903154,
+					2130903158,
+					2130903172,
+					2130903173,
+					2130903179,
+					2130903180,
+					2130903181,
+					2130903220,
+					2130903247,
+					2130903333,
+					2130903334,
+					2130903344,
+					2130903375,
+					2130903391,
+					2130903442,
+					2130903447,
+					2130903448,
+					2130903449,
+					2130903450,
+					2130903451,
+					2130903452,
+					2130903453,
+					2130903454,
+					2130903455,
+					2130903456,
+					2130903461,
+					2130903466,
+					2130903467,
+					2130903471};
 			
 			// aapt resource value: 0
 			public const int MaterialComponentsTheme_bottomSheetDialogTheme = 0;

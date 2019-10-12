@@ -6,6 +6,22 @@
              mc:Ignorable="d"
              x:Class="XrnCourse.MvvmBasics.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <!-- On Platform Resources -->
+            <OnPlatform x:Key="DefaultThickness" x:TypeArguments="Thickness">
+                <On Platform="iOS" Value="15"></On>
+                <On Platform="Android" Value="20"></On>
+                <On Platform="UWP" Value="10"></On>
+            </OnPlatform>
+            <OnPlatform x:Key="ErrorMessageFontSize" x:TypeArguments="NamedSize">
+                <On Platform="iOS, Android" Value="Small"></On>
+                <On Platform="UWP" Value="Micro"></On>
+            </OnPlatform>
 
+            <!-- Explicit Styles -->
+            <Style x:Key="MainLayout" TargetType="StackLayout">
+                <Setter Property="Margin" Value="{StaticResource DefaultThickness}" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -16,7 +16,7 @@
                     <bhv:EventToCommandBehavior 
                         EventName="ItemTapped"  
                         Command="{Binding ViewClassmateCommand}"  
-                        CommandParameter="{Binding . }" />
+                        EventArgsConverter="{StaticResource ItemTappedEventArgsConv}" />
                 </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate>

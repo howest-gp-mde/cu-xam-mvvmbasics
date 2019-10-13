@@ -7,7 +7,20 @@
              x:Class="XrnCourse.MvvmBasics.Views.MainView">
     <ContentPage.Content>
         <StackLayout Style="{StaticResource MainLayout}">
-            <ListView />
+            <ListView ItemsSource="{Binding Classmates}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout HeightRequest="50">
+                                <Label Text="{Binding Name}" 
+                                       VerticalOptions="CenterAndExpand" 
+                                       HorizontalOptions="StartAndExpand"
+                                       Margin="10,0,0,0" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

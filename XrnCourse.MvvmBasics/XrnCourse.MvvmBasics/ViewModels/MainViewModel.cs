@@ -1,5 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Windows.Input;
+using Xamarin.Forms;
 using XrnCourse.MvvmBasics.Domain.Models;
 using XrnCourse.MvvmBasics.Domain.Services;
 
@@ -45,5 +48,14 @@ namespace XrnCourse.MvvmBasics.ViewModels
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public ICommand SortCommand => new Command(
+            async () => {
+                //refresh the list and sort data by Name
+                var sortedMates = (await _classmateRepositoy.GetAll()).OrderBy(e => e.Name).ToList();
+                //reset the collection
+                Classmates = new ObservableCollection<Classmate>(sortedMates);
+            });
+
     }
 }

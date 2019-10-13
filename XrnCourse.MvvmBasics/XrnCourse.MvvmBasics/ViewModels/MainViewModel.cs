@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -55,6 +56,11 @@ namespace XrnCourse.MvvmBasics.ViewModels
                 var sortedMates = (await _classmateRepositoy.GetAll()).OrderBy(e => e.Name).ToList();
                 //reset the collection
                 Classmates = new ObservableCollection<Classmate>(sortedMates);
+            });
+
+        public ICommand ViewClassmateCommand => new Command<ItemTappedEventArgs>(
+            (ItemTappedEventArgs args) => {
+                Debug.WriteLine((args.Item as Classmate).Name); //prints Name of tapped mate
             });
 
     }

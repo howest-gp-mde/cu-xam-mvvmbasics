@@ -9,12 +9,12 @@
         <ScrollView>
             <StackLayout Style="{StaticResource MainLayout}">
                 <Label Text="Name" />
-                <Entry Placeholder="Enter classmate's name" Keyboard="Text" />
+                <Entry Text="{Binding Name}" Placeholder="Enter classmate's name" Keyboard="Text" />
                 <Label Text="Phone" />
-                <Entry Placeholder="Enter phone number" Keyboard="Telephone" />
+                <Entry Text="{Binding Phone}" Placeholder="Enter phone number" Keyboard="Telephone" />
                 <Label Text="Birthdate" />
-                <DatePicker />
-                <Label Text="Age: Unknown" />
+                <DatePicker Date="{Binding Birthdate}" />
+                <Label Text="{Binding Age}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

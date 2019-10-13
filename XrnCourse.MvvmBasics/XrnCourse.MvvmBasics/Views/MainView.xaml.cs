@@ -10,7 +10,7 @@ namespace XrnCourse.MvvmBasics.Views
         public MainView()
         {
             InitializeComponent();
-            BindingContext = new MainViewModel();
+            BindingContext = new MainViewModel(this.Navigation);
         }
     }
 }

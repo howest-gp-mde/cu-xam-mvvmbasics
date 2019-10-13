@@ -6,6 +6,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using XrnCourse.MvvmBasics.Domain.Models;
 using XrnCourse.MvvmBasics.Domain.Services;
+using XrnCourse.MvvmBasics.Views;
 
 namespace XrnCourse.MvvmBasics.ViewModels
 {
@@ -15,9 +16,12 @@ namespace XrnCourse.MvvmBasics.ViewModels
 
         private IClassmateRepository _classmateRepositoy;
         private ISeederService _seederService;
+        private INavigation _navigation;
 
-        public MainViewModel()
+        public MainViewModel(INavigation navigation)
         {
+            _navigation = navigation;
+
             //todo: inject these dependencies instead of
             //      instantiating a concrete implementation.
             _classmateRepositoy = new JsonClassmateRepository();
@@ -59,8 +63,8 @@ namespace XrnCourse.MvvmBasics.ViewModels
             });
 
         public ICommand ViewClassmateCommand => new Command<Classmate>(
-            (Classmate classmate) => {
-                Debug.WriteLine(classmate.Name);
+            async (Classmate classmate) => {
+                await _navigation.PushAsync(new ClassmateView(classmate));
             });
 
     }

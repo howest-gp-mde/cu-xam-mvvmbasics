@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
+using XrnCourse.MvvmBasics.Constants;
 using XrnCourse.MvvmBasics.Domain.Models;
 using XrnCourse.MvvmBasics.Domain.Services;
 using XrnCourse.MvvmBasics.Views;
@@ -25,6 +26,20 @@ namespace XrnCourse.MvvmBasics.ViewModels
             //      instantiating a concrete implementation.
             _classmateRepositoy = new JsonClassmateRepository();
             _seederService = new SeedDataStoreService(_classmateRepositoy);
+
+            //subscribe to ClassmateSaved message
+            MessagingCenter.Subscribe(this, MessageNames.ClassmateSaved,
+                (ClassmateViewModel sender, Classmate classmate) => {
+                    //refresh classmates listview each time an update occurs
+                    RefreshCommand.Execute(null);
+                });
+
+        }
+
+        ~MainViewModel()
+        {
+            //this is completely unnecessary, just showing how to use the Unsubscribe method!
+            MessagingCenter.Unsubscribe<ClassmateViewModel, Classmate>(this, MessageNames.ClassmateSaved);
         }
 
         private ObservableCollection<Classmate> classmates;

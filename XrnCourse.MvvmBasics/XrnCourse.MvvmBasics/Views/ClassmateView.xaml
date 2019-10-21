@@ -3,8 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="clr-namespace:XrnCourse.MvvmBasics.Converters"
              mc:Ignorable="d"
              x:Class="XrnCourse.MvvmBasics.Views.ClassmateView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:AgeToAgeStringConverter x:Key="AgeToAgeStringConv" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource MainLayout}">
@@ -14,7 +23,7 @@
                 <Entry Text="{Binding Phone}" Placeholder="Enter phone number" Keyboard="Telephone" />
                 <Label Text="Birthdate" />
                 <DatePicker Date="{Binding Birthdate}" />
-                <Label Text="{Binding Age}" />
+                <Label Text="{Binding Age, Converter={StaticResource AgeToAgeStringConv}}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -26,11 +25,6 @@ namespace XrnCourse.MvvmBasics.ViewModels
             //      instantiating a concrete implementation.
             _classmateRepositoy = new JsonClassmateRepository();
             _seederService = new SeedDataStoreService(_classmateRepositoy);
-
-            //todo: DO NOT call async or long-running operations in the
-            //      constructor, move this to a command
-            _seederService.EnsureSeeded();
-            Classmates = new ObservableCollection<Classmate>(_classmateRepositoy.GetAll().Result);
         }
 
         private ObservableCollection<Classmate> classmates;
@@ -53,6 +47,14 @@ namespace XrnCourse.MvvmBasics.ViewModels
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public ICommand RefreshCommand => new Command(
+            async () => {
+                //create sample data when datastore doesn't exist
+                _seederService.EnsureSeeded(); 
+                //get unsorted data from file
+                Classmates = new ObservableCollection<Classmate>(await _classmateRepositoy.GetAll()); 
+            });
 
         public ICommand SortCommand => new Command(
             async () => {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows.Input;
 using Xamarin.Forms;
 using XrnCourse.MvvmBasics.Domain.Models;
 using XrnCourse.MvvmBasics.Domain.Services;
@@ -62,6 +63,7 @@ namespace XrnCourse.MvvmBasics.ViewModels
             {
                 birthdate = value;
                 RaisePropertyChanged(nameof(Birthdate));
+                RaisePropertyChanged(nameof(Age));
             }
         }
         public int Age
@@ -73,6 +75,16 @@ namespace XrnCourse.MvvmBasics.ViewModels
                 return age;
             }
         }
+
+        public ICommand SaveCommand => new Command(
+            async () =>
+            {
+                _currentClassmate.Name = Name;
+                _currentClassmate.Phone = Phone;
+                _currentClassmate.Birthdate = Birthdate;
+                await _classmateRepositoy.UpdateClassmate(_currentClassmate);
+            });
+
 
         /// <summary>
         /// Raises the PropertyChanged event if it has handlers attached to it

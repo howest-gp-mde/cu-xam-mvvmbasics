@@ -1,6 +1,8 @@
-﻿using Xamarin.Forms;
+﻿using Autofac;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XrnCourse.MvvmBasics.Domain.Services;
+using XrnCourse.MvvmBasics.IoC;
 using XrnCourse.MvvmBasics.ViewModels;
 
 namespace XrnCourse.MvvmBasics.Views
@@ -12,12 +14,17 @@ namespace XrnCourse.MvvmBasics.Views
         {
             InitializeComponent();
 
-            //todo: move instantiation to IoC container!
-            IClassmateRepository classmateRepository = new JsonClassmateRepository();
-            ISeederService seederService = new SeedDataStoreService(classmateRepository);
+            //resolve dependencies from the container
+            //todo: using automatic constructor injection instead!
+            IClassmateRepository classmateRepository = IocRegistry.Container
+                .Resolve<IClassmateRepository>();
 
+            ISeederService seederService = IocRegistry.Container
+                .Resolve<ISeederService>(TypedParameter.From(classmateRepository));
+            
             BindingContext = new MainViewModel(classmateRepository, seederService, this.Navigation);
         }
+
         protected override void OnAppearing()
         {
             //execut the RefreshCommand which lives on the MainViewModel

@@ -18,14 +18,14 @@ namespace XrnCourse.MvvmBasics.ViewModels
         private ISeederService _seederService;
         private INavigation _navigation;
 
-        public MainViewModel(INavigation navigation)
+        public MainViewModel(
+            IClassmateRepository classmateRepository,
+            ISeederService seederService,
+            INavigation navigation)
         {
             _navigation = navigation;
-
-            //todo: inject these dependencies instead of
-            //      instantiating a concrete implementation.
-            _classmateRepositoy = new JsonClassmateRepository();
-            _seederService = new SeedDataStoreService(_classmateRepositoy);
+            _classmateRepositoy = classmateRepository;
+            _seederService = seederService;
 
             //subscribe to ClassmateSaved message
             MessagingCenter.Subscribe(this, MessageNames.ClassmateSaved,

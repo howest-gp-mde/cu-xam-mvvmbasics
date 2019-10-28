@@ -1,6 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XrnCourse.MvvmBasics.Domain.Models;
+using XrnCourse.MvvmBasics.Domain.Services;
 using XrnCourse.MvvmBasics.ViewModels;
 
 namespace XrnCourse.MvvmBasics.Views
@@ -11,7 +12,11 @@ namespace XrnCourse.MvvmBasics.Views
         public ClassmateView(Classmate classmate)
         {
             InitializeComponent();
-            BindingContext = new ClassmateViewModel(classmate, this.Navigation);
+
+            //todo: move instantiation to IoC container!
+            IClassmateRepository classmateRepository = new JsonClassmateRepository();
+            
+            BindingContext = new ClassmateViewModel(classmate, classmateRepository);
         }
     }
 }

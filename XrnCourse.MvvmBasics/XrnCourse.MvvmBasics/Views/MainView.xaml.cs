@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XrnCourse.MvvmBasics.Domain.Services;
 using XrnCourse.MvvmBasics.ViewModels;
 
 namespace XrnCourse.MvvmBasics.Views
@@ -10,7 +11,12 @@ namespace XrnCourse.MvvmBasics.Views
         public MainView()
         {
             InitializeComponent();
-            BindingContext = new MainViewModel(this.Navigation);
+
+            //todo: move instantiation to IoC container!
+            IClassmateRepository classmateRepository = new JsonClassmateRepository();
+            ISeederService seederService = new SeedDataStoreService(classmateRepository);
+
+            BindingContext = new MainViewModel(classmateRepository, seederService, this.Navigation);
         }
         protected override void OnAppearing()
         {

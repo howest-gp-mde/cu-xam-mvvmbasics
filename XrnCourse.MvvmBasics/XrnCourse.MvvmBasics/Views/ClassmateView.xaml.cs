@@ -1,7 +1,9 @@
-﻿using Xamarin.Forms;
+﻿using Autofac;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XrnCourse.MvvmBasics.Domain.Models;
 using XrnCourse.MvvmBasics.Domain.Services;
+using XrnCourse.MvvmBasics.IoC;
 using XrnCourse.MvvmBasics.ViewModels;
 
 namespace XrnCourse.MvvmBasics.Views
@@ -13,9 +15,11 @@ namespace XrnCourse.MvvmBasics.Views
         {
             InitializeComponent();
 
-            //todo: move instantiation to IoC container!
-            IClassmateRepository classmateRepository = new JsonClassmateRepository();
-            
+            //resolve dependencies from the container
+            //todo: using automatic constructor injection instead!
+            IClassmateRepository classmateRepository = IocRegistry.Container
+                .Resolve<IClassmateRepository>();
+
             BindingContext = new ClassmateViewModel(classmate, classmateRepository);
         }
     }

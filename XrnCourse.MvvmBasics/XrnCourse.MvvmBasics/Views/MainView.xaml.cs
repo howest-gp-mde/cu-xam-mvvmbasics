@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XrnCourse.MvvmBasics.Domain.Services;
 using XrnCourse.MvvmBasics.IoC;
 using XrnCourse.MvvmBasics.ViewModels;
 
@@ -14,15 +13,12 @@ namespace XrnCourse.MvvmBasics.Views
         {
             InitializeComponent();
 
-            //resolve dependencies from the container
-            //todo: using automatic constructor injection instead!
-            IClassmateRepository classmateRepository = IocRegistry.Container
-                .Resolve<IClassmateRepository>();
+            //resolve the view model (enabling automatic DI for its ctor)
+            //note that we now pass the navigation parameter to the Resolve method
+            var viewModel = IocRegistry.Container
+                .Resolve<MainViewModel>(TypedParameter.From(this.Navigation));
 
-            ISeederService seederService = IocRegistry.Container
-                .Resolve<ISeederService>(TypedParameter.From(classmateRepository));
-            
-            BindingContext = new MainViewModel(classmateRepository, seederService, this.Navigation);
+            BindingContext = viewModel;
         }
 
         protected override void OnAppearing()

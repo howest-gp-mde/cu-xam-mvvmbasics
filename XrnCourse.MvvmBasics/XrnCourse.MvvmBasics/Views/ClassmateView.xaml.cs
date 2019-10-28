@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XrnCourse.MvvmBasics.Domain.Models;
-using XrnCourse.MvvmBasics.Domain.Services;
 using XrnCourse.MvvmBasics.IoC;
 using XrnCourse.MvvmBasics.ViewModels;
 
@@ -15,12 +14,12 @@ namespace XrnCourse.MvvmBasics.Views
         {
             InitializeComponent();
 
-            //resolve dependencies from the container
-            //todo: using automatic constructor injection instead!
-            IClassmateRepository classmateRepository = IocRegistry.Container
-                .Resolve<IClassmateRepository>();
+            //resolve the view model (enabling automatic DI for its ctor)
+            //note that we now pass the Classmate parameter to th Resolve method
+            var viewModel = IocRegistry.Container
+                .Resolve<ClassmateViewModel>(TypedParameter.From(classmate));
 
-            BindingContext = new ClassmateViewModel(classmate, classmateRepository);
+            BindingContext = viewModel;
         }
     }
 }

@@ -12,24 +12,17 @@ namespace XrnCourse.MvvmBasics.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private IClassmateRepository _classmateRepositoy;
-        private ISeederService _seederService;
-        private INavigation _navigation;
         private Classmate _currentClassmate; // holds classmate being edited
 
-        public ClassmateViewModel(Classmate classmate, INavigation navigation)
+        public ClassmateViewModel(Classmate classmate,
+                                  IClassmateRepository classmateRepositoy)
         {
-            _navigation = navigation;
+            //classmate entity being edited
             _currentClassmate = classmate;
 
-            //todo: inject this dependencies instead of
-            //      instantiating a concrete implementation.
-            _classmateRepositoy = new JsonClassmateRepository();
-            _seederService = new SeedDataStoreService(_classmateRepositoy);
+            //save a reference to the dependency
+            _classmateRepositoy = classmateRepositoy;
 
-            //todo: DO NOT call async or long-running operations in the
-            //      constructor, move this to a command
-            _seederService.EnsureSeeded();
-            
             //initialize the properties with data from domain model
             this.Name = _currentClassmate.Name;
             this.Phone = _currentClassmate.Phone;
